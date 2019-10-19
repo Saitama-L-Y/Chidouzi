@@ -8,7 +8,7 @@ public:
 	using Body = MapUint;
     Enemy() = default;
 	Enemy(Coor bornPos, Map& m, vector<MoveDir>& route, MapUint b = '!');
-	void move();               //ÖØÐ´moveº¯Êý
+	void move();
 	bool Catch(const Player& p);
 	void draw(vector<vector<MapUint> >& buffer);
 private:

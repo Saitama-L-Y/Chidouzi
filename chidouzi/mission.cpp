@@ -31,3 +31,15 @@ void mission1()
     player = Player({ 1,2 }, map);
 
 }
+
+void mission2()
+{
+    cout << "mission2" << endl;
+    g_status = Win;
+}
+
+void mission3()
+{
+    cout << "mission3" << endl;
+    g_status = Win;
+}

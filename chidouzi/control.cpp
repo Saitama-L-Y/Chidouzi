@@ -5,12 +5,13 @@ void keyPress()
 {
     while (g_status != Quit) {
         if (_kbhit())
-            g_presskey = _getch();
+            g_presskey.setPressKey(_getch());
     }
 }
 
 void display()
 {
+    system("cls");
     while (g_status == Playing)
     {
         //创建显示缓冲区
@@ -48,9 +49,7 @@ void player_run()
 {
     while (g_status == Playing)
     {
-        if (g_presskey != '\0')
-            player.move();
-        g_presskey = '\0';
+        player.move();
         this_thread::sleep_for(chrono::milliseconds(100));
     }
 }

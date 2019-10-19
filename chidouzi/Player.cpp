@@ -11,7 +11,7 @@ void Player::move()
     Coor nextPos;
     MoveDir md;
     Body nextBody = body;
-    switch (g_presskey)
+    switch (g_presskey.getPressKey())
     {
     case 'w':
     case 'W':
