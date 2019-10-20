@@ -17,31 +17,29 @@ int main()
 
     thread t_keypress = thread(keyPress);
 
-    int mission = 1;
-    int select = 0;
+    int _mission = 1;               //选中的关卡
+    int _select = 0;                //选中的菜单项
     while (g_status != Quit)
     {
         if (g_status == Start)
         {
             void menu(int &mission, int &select);
-            menu(mission, select);
+            menu(_mission, _select);
         }
         else if (g_status == Playing)
         {
             void play(int);
-            play(mission);
+            play(_mission);
         }
         else if (g_status == Win)
         {
-            cout << "You Win." << endl;
-            _getch();
-            g_status = Start;
+			void win(int& mission);
+			win(_mission);
         }
         else if (g_status == Died)
         {
-            cout << "You Died." << endl;
-            _getch();
-            g_status = Start;
+			void died();
+			died();
         }
     }
     t_keypress.join();
@@ -50,9 +48,9 @@ int main()
 
 void menu(int &mission, int &select)
 {
-    system("cls");
-    /*SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });*/
-    cout << " 使用W/S/A/D控制人物移动，躲避敌人的同时吃完所有食物获胜." << endl;
+    //system("cls");
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });
+    cout << "使用W/S/A/D控制人物移动，躲避敌人的同时吃完所有食物获胜." << endl;
     string m[3] = {
         "1.start",
         "2.jump mission ",
@@ -121,4 +119,30 @@ void play(int mission)
     t_player.join();
     t_enemys.join();
     t_display.join();
+}
+
+void win(int& mission)
+{
+	cout << "You win." << endl;
+	if (mission < 3) {
+		cout << "按下回车进入下一关." << endl;
+		mission++;
+		g_status = Playing;
+	}
+	else {
+		cout << "按下回车返回菜单." << endl;
+		mission = 1;
+		g_status = Start;
+	}
+	while (_getch() != '\r');
+	system("cls");
+}
+
+void died()
+{
+	cout << "You died." << endl;
+	cout << "按下回车返回菜单." << endl;
+	g_status = Start;
+	while (_getch() != '\r');
+	system("cls");
 }
