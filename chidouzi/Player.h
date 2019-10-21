@@ -9,7 +9,7 @@ public:
     Player(Coor bornPos, Map& m, MapUint b = '>');
     void move();
 	void draw(vector<vector<MapUint> >& buffer);
-private:
+protected:
 	Body body;                 //玩家控制的角色的身体(在屏幕上显示的图案)
 	void eat(Coor next);
 };

@@ -27,7 +27,7 @@ public:
     void eatFood(Coor f);
 	const vector<MapUint>& operator[](int i);
     const vector<vector<MapUint> >& getMap();
-private:
+protected:
     int foodCount;
 	vector<vector<MapUint> > _m;
 };

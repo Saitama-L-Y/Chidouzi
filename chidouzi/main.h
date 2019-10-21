@@ -6,6 +6,7 @@
 #include <string>
 #include "Map.h"
 #include "Enemy.h"
+#include "Boss.h"
 #include "Player.h"
 #include "mission.h"
 #include "control.h"
