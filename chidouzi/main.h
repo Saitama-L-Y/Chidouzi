@@ -17,4 +17,4 @@ extern GameSatus g_status;
 extern pressKey g_presskey;
 extern Map map;
 extern Player player;
-extern vector<Enemy> enemys;
+extern vector<Enemy*> enemys;

@@ -3,7 +3,7 @@
 
 Map map;
 Player player;
-vector<Enemy> enemys;
+vector<Enemy*> enemys;
 pressKey g_presskey;
 GameSatus g_status = Start;
 

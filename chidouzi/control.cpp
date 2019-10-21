@@ -18,7 +18,7 @@ void display()
         vector<vector<MapUint> > buffer(map.getMap());
 		player.draw(buffer);
 		for (int k = 0; k < enemys.size(); k++)
-			enemys[k].draw(buffer);
+			enemys[k]->draw(buffer);
 
         //Ë¢ÐÂÆÁÄ»
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });
@@ -36,7 +36,7 @@ void display()
             return;
         }
         for (int k = 0; k < enemys.size(); k++)
-            if (enemys[k].Catch(player))
+            if (enemys[k]->Catch(player))
             {
                 g_status = Died;
                 return;
@@ -59,7 +59,11 @@ void enemys_run()
     while (g_status == Playing)
     {
         for (int k = 0; k < enemys.size(); k++)
-            enemys[k].move();
+            enemys[k]->move();
         this_thread::sleep_for(chrono::milliseconds(700));
     }
+
+    for (int i = 0; i < enemys.size(); i++)
+        delete enemys[i];
+    vector<Enemy*>().swap(enemys);
 }
